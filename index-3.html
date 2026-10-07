@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillBridge India | Learn. Practice. Prove. Grow.</title>
+<meta name="description" content="SkillBridge India - AI-assisted digital upskilling and career platform.">
+<style>
+:root{
+  --primary:#5b5cf0;
+  --primary2:#7c3aed;
+  --dark:#101426;
+  --text:#22263a;
+  --muted:#697086;
+  --light:#f6f7ff;
+  --white:#fff;
+  --border:#e7e9f4;
+  --success:#16a36a;
+  --shadow:0 15px 45px rgba(33,39,88,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);background:#fff;line-height:1.6}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer;border:0}
+.container{width:min(1150px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.navbar{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:23px;font-weight:800;color:var(--dark)}
+.logo span{color:var(--primary)}
+.navlinks{display:flex;gap:24px;align-items:center}
+.navlinks a{font-size:14px;font-weight:600;color:#555b70}
+.navlinks a:hover{color:var(--primary)}
+.menu{display:none;font-size:25px;background:none}
+.btn{display:inline-block;padding:12px 20px;border-radius:11px;font-weight:700;transition:.2s}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary2));color:white;box-shadow:0 10px 25px rgba(91,92,240,.22)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-light{background:white;color:var(--primary);border:1px solid var(--border)}
+.hero{background:linear-gradient(135deg,#f4f5ff 0%,#fff 50%,#f5f1ff 100%);padding:85px 0 75px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}
+.badge{display:inline-flex;padding:7px 12px;border-radius:30px;background:#e9e9ff;color:var(--primary);font-size:13px;font-weight:800;margin-bottom:18px}
+h1{font-size:clamp(40px,5vw,65px);line-height:1.08;letter-spacing:-2px;color:var(--dark);margin-bottom:20px}
+.gradient{color:var(--primary)}
+.hero p{font-size:18px;color:var(--muted);max-width:650px;margin-bottom:28px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-card{background:white;border:1px solid var(--border);border-radius:25px;padding:25px;box-shadow:var(--shadow)}
+.profile{display:flex;align-items:center;gap:13px;margin-bottom:20px}
+.avatar{width:45px;height:45px;border-radius:50%;display:grid;place-items:center;background:#e8e8ff;color:var(--primary);font-weight:800}
+.profile small{color:var(--muted)}
+.progress-title{display:flex;justify-content:space-between;font-weight:700;margin:18px 0 7px}
+.progress{height:9px;background:#eceef7;border-radius:20px;overflow:hidden}
+.progress i{display:block;height:100%;width:74%;background:linear-gradient(90deg,var(--primary),var(--primary2));border-radius:20px}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.mini{padding:15px;border:1px solid var(--border);border-radius:15px;background:#fafaff}
+.mini b{font-size:22px;color:var(--primary)}
+section{padding:80px 0}
+.section-head{text-align:center;max-width:720px;margin:0 auto 42px}
+.section-head h2{font-size:38px;line-height:1.15;color:var(--dark);margin-bottom:12px}
+.section-head p{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:white;border:1px solid var(--border);border-radius:18px;padding:25px;box-shadow:0 7px 25px rgba(25,31,70,.05)}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);transition:.2s}
+.icon{width:50px;height:50px;display:grid;place-items:center;border-radius:14px;background:#eeeeff;font-size:24px;margin-bottom:17px}
+.card h3{margin-bottom:8px;color:var(--dark)}
+.card p{color:var(--muted);font-size:14px}
+.problem{background:var(--light)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.list{display:grid;gap:14px;margin-top:20px}
+.list div{display:flex;gap:12px;align-items:flex-start}
+.check{min-width:25px;height:25px;border-radius:50%;background:#e4f8ef;color:var(--success);display:grid;place-items:center;font-weight:800}
+.quote{background:linear-gradient(135deg,var(--primary),var(--primary2));color:white;padding:35px;border-radius:24px;box-shadow:var(--shadow)}
+.quote h3{font-size:28px;margin-bottom:12px}
+.skills .card{position:relative}
+.tag{display:inline-block;background:#f0f0ff;color:var(--primary);padding:5px 9px;border-radius:8px;font-size:11px;font-weight:800;margin-bottom:13px}
+.course-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:20px}
+.rating{font-size:13px;color:#e49a18}
+.assessment{background:var(--dark);color:white}
+.assessment .section-head h2{color:white}
+.assessment .section-head p{color:#b9bfd4}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.step{padding:22px;border:1px solid #2c324b;border-radius:16px;background:#171b30}
+.number{font-size:30px;font-weight:900;color:#999bff;margin-bottom:10px}
+.step p{color:#b9bfd4;font-size:14px}
+.dashboard{background:#f8f9ff}
+.dashboard-box{background:white;border:1px solid var(--border);border-radius:22px;padding:25px;box-shadow:var(--shadow)}
+.dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.dash-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.stat{padding:18px;background:#fafaff;border:1px solid var(--border);border-radius:15px}
+.stat small{color:var(--muted)}
+.stat b{display:block;font-size:25px;color:var(--dark)}
+.project{background:#fff}
+.portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.project-card{border:1px solid var(--border);border-radius:17px;overflow:hidden;background:white}
+.project-img{height:130px;background:linear-gradient(135deg,#ddddff,#f1e9ff);display:grid;place-items:center;font-size:50px}
+.project-body{padding:18px}
+.mentor-card{display:flex;align-items:center;gap:16px}
+.mentor-avatar{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:#e9e9ff;font-size:28px}
+.career{background:var(--light)}
+.career-box{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.career-list{display:grid;gap:12px}
+.career-item{background:white;padding:15px;border-radius:13px;border:1px solid var(--border)}
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.price{border:1px solid var(--border);border-radius:20px;padding:30px;background:white;position:relative}
+.price.featured{border:2px solid var(--primary);box-shadow:var(--shadow)}
+.popular{position:absolute;right:18px;top:18px;background:var(--primary);color:white;padding:5px 9px;border-radius:8px;font-size:11px;font-weight:800}
+.price h3{font-size:21px}
+.amount{font-size:38px;font-weight:900;margin:15px 0;color:var(--dark)}
+.price ul{list-style:none;display:grid;gap:10px;margin:20px 0;color:var(--muted);font-size:14px}
+.contact{background:#fafaff}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+form{background:white;border:1px solid var(--border);padding:25px;border-radius:20px}
+input,select,textarea{width:100%;padding:13px 14px;margin-bottom:13px;border:1px solid var(--border);border-radius:10px;outline:none;font:inherit}
+input:focus,select:focus,textarea:focus{border-color:var(--primary)}
+footer{background:var(--dark);color:#b9bfd4;padding:35px 0}
+.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer strong{color:white}
+footer a:hover{color:white}
+.toast{position:fixed;right:20px;bottom:20px;background:var(--dark);color:white;padding:14px 18px;border-radius:12px;display:none;z-index:200;box-shadow:var(--shadow)}
+@media(max-width:850px){
+  .navlinks{display:none;position:absolute;top:72px;left:0;width:100%;background:white;padding:20px;flex-direction:column;border-bottom:1px solid var(--border)}
+  .navlinks.open{display:flex}.menu{display:block}
+  .hero-grid,.split,.career-box,.contact-grid{grid-template-columns:1fr}
+  .cards,.portfolio,.pricing{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}.dash-stats{grid-template-columns:1fr 1fr}
+}
+@media(max-width:550px){
+  section{padding:60px 0}.cards,.portfolio,.pricing{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}.hero{padding:65px 0}
+  .hero-card{padding:18px}.section-head h2{font-size:31px}
+  .dash-top{align-items:flex-start;gap:10px;flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container navbar">
+    <a class="logo" href="#home">Skill<span>Bridge</span> India</a>
+    <button class="menu" onclick="toggleMenu()">☰</button>
+    <div class="navlinks" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#courses">Skills</a>
+      <a href="#assessment">Assessment</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#mentors">Mentors</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact" class="btn btn-primary">Join Now</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <span class="badge">AI-ASSISTED DIGITAL UPSKILLING PLATFORM</span>
+      <h1>Learn the right skill. <span class="gradient">Build your future.</span></h1>
+      <p>SkillBridge India connects students and early-career professionals with practical, affordable digital skills through personalized learning paths, projects, mentors and career support.</p>
+      <div class="actions">
+        <a href="#assessment" class="btn btn-primary">Take Skill Assessment →</a>
+        <a href="#courses" class="btn btn-light">Explore Skills</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="profile">
+        <div class="avatar">VM</div>
+        <div><b>Welcome back!</b><br><small>Your personalized learning journey</small></div>
+      </div>
+      <span class="tag">YOUR LEARNING ROADMAP</span>
+      <h3>Business Analytics Career Track</h3>
+      <div class="progress-title"><span>Overall Progress</span><span>74%</span></div>
+      <div class="progress"><i></i></div>
+      <div class="mini-grid">
+        <div class="mini"><b>12</b><br><small>Lessons completed</small></div>
+        <div class="mini"><b>4</b><br><small>Projects completed</small></div>
+        <div class="mini"><b>86%</b><br><small>Quiz average</small></div>
+        <div class="mini"><b>3</b><br><small>Portfolio items</small></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="problem">
+  <div class="container split">
+    <div>
+      <div class="section-head" style="text-align:left;margin:0">
+        <span class="tag">THE PROBLEM</span>
+        <h2>From academic knowledge to job-ready skills.</h2>
+        <p>Many learners know the theory but need practical experience, direction and affordable guidance to become career-ready.</p>
+      </div>
+      <div class="list">
+        <div><span class="check">✓</span><span>Too many online courses create information overload.</span></div>
+        <div><span class="check">✓</span><span>Choosing the right learning path can be difficult.</span></div>
+        <div><span class="check">✓</span><span>Premium training and mentoring can be expensive or geographically limited.</span></div>
+      </div>
+    </div>
+    <div class="quote">
+      <h3>Our Solution</h3>
+      <p>One platform that takes learners from assessment to learning roadmap, practice, portfolio and career support.</p>
+      <br>
+      <b>“Learn the right skill, practice it, prove it and move toward your career goal.”</b>
+    </div>
+  </div>
+</section>
+
+<section id="courses" class="skills">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">LEARN IN-DEMAND SKILLS</span>
+      <h2>Choose your skill track</h2>
+      <p>Practical, career-focused learning in high-demand digital skill areas.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="icon">📣</div><span class="tag">MARKETING</span><h3>Digital Marketing</h3><p>Learn social media, content, SEO and digital campaign fundamentals.</p><div class="course-bottom"><b>8 Modules</b><span class="rating">★ 4.8</span></div></div>
+      <div class="card"><div class="icon">📊</div><span class="tag">ANALYTICS</span><h3>Business Analytics</h3><p>Understand data, dashboards, insights, trends and business decision-making.</p><div class="course-bottom"><b>10 Modules</b><span class="rating">★ 4.9</span></div></div>
+      <div class="card"><div class="icon">📗</div><span class="tag">PRODUCTIVITY</span><h3>Excel</h3><p>Build practical spreadsheet, analysis and reporting skills.</p><div class="course-bottom"><b>9 Modules</b><span class="rating">★ 4.8</span></div></div>
+      <div class="card"><div class="icon">📈</div><span class="tag">DATA</span><h3>Data Visualization</h3><p>Turn information into clear charts, dashboards and useful business insights.</p><div class="course-bottom"><b>7 Modules</b><span class="rating">★ 4.7</span></div></div>
+      <div class="card"><div class="icon">🤝</div><span class="tag">BUSINESS</span><h3>CRM</h3><p>Explore customer relationship management and practical business workflows.</p><div class="course-bottom"><b>6 Modules</b><span class="rating">★ 4.8</span></div></div>
+      <div class="card"><div class="icon">🛒</div><span class="tag">E-COMMERCE</span><h3>E-commerce</h3><p>Learn the fundamentals of online stores, customers, products and sales.</p><div class="course-bottom"><b>8 Modules</b><span class="rating">★ 4.9</span></div></div>
+      <div class="card"><div class="icon">🤖</div><span class="tag">TECHNOLOGY</span><h3>AI Tools</h3><p>Build practical familiarity with AI-assisted tools for modern work.</p><div class="course-bottom"><b>7 Modules</b><span class="rating">★ 4.9</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="assessment" class="assessment">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">PERSONALIZED LEARNING</span>
+      <h2>Start with a skill assessment</h2>
+      <p>Tell us where you want to go. SkillBridge helps create a learning roadmap based on your career goals and current skills.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="number">01</div><h3>Choose Goal</h3><p>Select your career goal or skill area.</p></div>
+      <div class="step"><div class="number">02</div><h3>Assess Skills</h3><p>Complete a diagnostic assessment.</p></div>
+      <div class="step"><div class="number">03</div><h3>Get Roadmap</h3><p>Receive a personalized learning path.</p></div>
+      <div class="step"><div class="number">04</div><h3>Build & Prove</h3><p>Practice, create projects and build your portfolio.</p></div>
+    </div>
+    <br>
+    <div style="text-align:center"><button class="btn btn-primary" onclick="startAssessment()">Start Demo Assessment</button></div>
+  </div>
+</section>
+
+<section id="dashboard" class="dashboard">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">LEARN & TRACK</span>
+      <h2>Your learning dashboard</h2>
+      <p>Everything needed to monitor learning progress and improve performance.</p>
+    </div>
+    <div class="dashboard-box">
+      <div class="dash-top"><div><h2>Business Analytics Track</h2><p style="color:var(--muted)">Personalized learning roadmap</p></div><span class="tag">74% COMPLETE</span></div>
+      <div class="dash-stats">
+        <div class="stat"><small>Lessons</small><b>12/16</b></div>
+        <div class="stat"><small>Projects</small><b>4</b></div>
+        <div class="stat"><small>Quiz Score</small><b>86%</b></div>
+        <div class="stat"><small>Certificates</small><b>2</b></div>
+      </div>
+      <br>
+      <h3>Current Learning Path</h3>
+      <div class="list">
+        <div><span class="check">✓</span><span>Excel Fundamentals — Completed</span></div>
+        <div><span class="check">✓</span><span>Data Visualization — Completed</span></div>
+        <div><span class="check">✓</span><span>Business Analytics Project — In Progress</span></div>
+        <div><span class="check">→</span><span>Career Portfolio — Next Step</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="project">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">PRACTICE & PORTFOLIO</span>
+      <h2>Build proof of your skills</h2>
+      <p>SkillBridge focuses on real workplace capability, not certificates alone.</p>
+    </div>
+    <div class="portfolio">
+      <div class="project-card"><div class="project-img">📊</div><div class="project-body"><span class="tag">ANALYTICS</span><h3>Sales Dashboard</h3><p>Analyze sales performance and create a business dashboard.</p></div></div>
+      <div class="project-card"><div class="project-img">🛍️</div><div class="project-body"><span class="tag">E-COMMERCE</span><h3>Online Store Project</h3><p>Plan an e-commerce store and understand its customer journey.</p></div></div>
+      <div class="project-card"><div class="project-img">📱</div><div class="project-body"><span class="tag">MARKETING</span><h3>Digital Campaign</h3><p>Create a practical digital marketing campaign strategy.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="mentors" class="problem">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">HUMAN GUIDANCE</span>
+      <h2>Learn with mentor support</h2>
+      <p>Get feedback, guidance and practical advice from industry experts.</p>
+    </div>
+    <div class="cards">
+      <div class="card mentor-card"><div class="mentor-avatar">👨‍💼</div><div><h3>Industry Mentors</h3><p>Connect learning with real workplace expectations.</p></div></div>
+      <div class="card mentor-card"><div class="mentor-avatar">💬</div><div><h3>Project Feedback</h3><p>Receive feedback to improve your practical work.</p></div></div>
+      <div class="card mentor-card"><div class="mentor-avatar">📅</div><div><h3>Mentor Sessions</h3><p>Book sessions for career and project guidance.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="career">
+  <div class="container career-box">
+    <div>
+      <span class="tag">CAREER SUPPORT</span>
+      <h2 style="font-size:38px;line-height:1.15;color:var(--dark);margin-bottom:15px">Turn skills into career direction.</h2>
+      <p style="color:var(--muted)">Use your projects, portfolio and learning progress to move toward your career goals.</p>
+      <br><a href="#contact" class="btn btn-primary">Build My Career Path</a>
+    </div>
+    <div class="career-list">
+      <div class="career-item"><b>🎯 Personalized recommendations</b><br><small>Recommendations based on career goals and learning progress.</small></div>
+      <div class="career-item"><b>💼 Employability resources</b><br><small>Resources designed to support career preparation.</small></div>
+      <div class="career-item"><b>🏆 Digital certificates</b><br><small>Show completed learning achievements.</small></div>
+      <div class="career-item"><b>🔗 Shareable portfolio</b><br><small>Present practical projects and skills.</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">FREEMIUM MODEL</span>
+      <h2>Simple plans for every learner</h2>
+      <p>The business model combines free access with premium learning and support services.</p>
+    </div>
+    <div class="pricing">
+      <div class="price"><h3>Free</h3><div class="amount">₹0</div><p>Start learning and explore the platform.</p><ul><li>✓ Basic skill assessment</li><li>✓ Selected learning content</li><li>✓ Basic progress tracking</li><li>✓ Career resources</li></ul><button class="btn btn-light" onclick="join('Free')">Get Started</button></div>
+      <div class="price featured"><span class="popular">POPULAR</span><h3>Premium</h3><div class="amount">₹499<span style="font-size:14px">/mo</span></div><p>For learners who want deeper practical training.</p><ul><li>✓ Full skill tracks</li><li>✓ Practical projects</li><li>✓ Advanced assessments</li><li>✓ Digital certificates</li><li>✓ Personalized recommendations</li></ul><button class="btn btn-primary" onclick="join('Premium')">Choose Premium</button></div>
+      <div class="price"><h3>Mentor+</h3><div class="amount">₹999<span style="font-size:14px">/mo</span></div><p>Learning plus personalized mentor guidance.</p><ul><li>✓ Everything in Premium</li><li>✓ Mentor sessions</li><li>✓ Project feedback</li><li>✓ Career guidance</li></ul><button class="btn btn-light" onclick="join('Mentor+')">Choose Mentor+</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container contact-grid">
+    <div>
+      <span class="tag">JOIN SKILLBRIDGE</span>
+      <h2 style="font-size:42px;line-height:1.15;color:var(--dark);margin-bottom:15px">Ready to build your skills?</h2>
+      <p style="color:var(--muted);font-size:17px">Join students, graduates and professionals building practical digital skills for the modern workplace.</p>
+      <div class="list">
+        <div><span class="check">✓</span><span>Students & fresh graduates</span></div>
+        <div><span class="check">✓</span><span>Working professionals</span></div>
+        <div><span class="check">✓</span><span>Colleges & institutions</span></div>
+        <div><span class="check">✓</span><span>Mentors & industry experts</span></div>
+      </div>
+    </div>
+    <form onsubmit="submitForm(event)">
+      <h3 style="margin-bottom:15px">Create your interest profile</h3>
+      <input id="name" type="text" placeholder="Your name" required>
+      <input id="email" type="email" placeholder="Email address" required>
+      <select id="role" required><option value="">I am a...</option><option>Student</option><option>Fresh Graduate</option><option>Working Professional</option><option>College / Institution</option><option>Mentor</option></select>
+      <select id="interest" required><option value="">Interested skill</option><option>Digital Marketing</option><option>Business Analytics</option><option>Excel</option><option>Data Visualization</option><option>CRM</option><option>E-commerce</option><option>AI Tools</option></select>
+      <textarea id="message" rows="4" placeholder="What do you want to learn?"></textarea>
+      <button class="btn btn-primary" style="width:100%">Join SkillBridge India</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-row">
+    <div><strong>SkillBridge India</strong><br><small>Skills + Practice + Portfolio + Career Direction</small></div>
+    <div>© 2026 SkillBridge India • Digital Upskilling & Career Platform</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function toggleMenu(){
+  document.getElementById('navlinks').classList.toggle('open');
+}
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));
+
+function showToast(message){
+  const t=document.getElementById('toast');
+  t.textContent=message;t.style.display='block';
+  setTimeout(()=>t.style.display='none',2800);
+}
+function startAssessment(){
+  showToast('Demo assessment started! Your personalized roadmap will be generated.');
+  setTimeout(()=>document.getElementById('courses').scrollIntoView({behavior:'smooth'}),700);
+}
+function join(plan){
+  showToast(plan+' plan selected. Scroll down to join SkillBridge.');
+  setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),600);
+}
+function submitForm(e){
+  e.preventDefault();
+  const name=document.getElementById('name').value;
+  showToast('Thank you, '+name+'! Your SkillBridge interest profile is ready.');
+  e.target.reset();
+}
+</script>
+</body>
+</html>
